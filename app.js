@@ -6,6 +6,8 @@ const helmet = require('helmet');
 
 // Route imports
 const indexRouter = require('./routes/index');
+const levelRouter = require('./routes/level');
+const playerRouter = require('./routes/player');
 
 const app = express();
 
@@ -44,6 +46,8 @@ app.use(limiter);
 
 // Routes
 app.use('/', indexRouter);
+app.use('/levels', levelRouter);
+app.use('/players', playerRouter);
 
 // Error handler
 app.use((err, req, res, next) => {
