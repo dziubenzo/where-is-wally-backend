@@ -20,7 +20,6 @@ exports.post_create_level = asyncHandler(async (req, res, next) => {
 });
 
 exports.get_levels_count = asyncHandler(async (req, res, next) => {
-  return res.json({
-    status: 'TODO',
-  });
+  const levelsCount = await Level.countDocuments({}).lean().exec();
+  return res.json(levelsCount);
 });
