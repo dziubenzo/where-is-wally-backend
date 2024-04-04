@@ -25,7 +25,14 @@ exports.get_players_count = asyncHandler(async (req, res, next) => {
 });
 
 exports.get_latest_player = asyncHandler(async (req, res, next) => {
-  return res.json({
-    status: 'TODO',
-  });
+  const latestPlayer = await Player.findOne()
+    .sort({ end_date: -1 })
+    .lean()
+    .exec();
+  if (!latestPlayer) {
+    return res.status(404).json({
+      message: 'Not found.',
+    });
+  }
+  return res.json(latestPlayer);
 });
