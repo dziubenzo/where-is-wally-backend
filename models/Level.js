@@ -7,36 +7,33 @@ const LevelSchema = new Schema({
     type: Number,
     min: 1,
     required: true,
-    unique: true,
   },
   name: {
     type: String,
     required: true,
     minLength: 1,
     maxLength: 16,
-    unique: true,
   },
   image_url: {
     type: String,
     required: true,
-    unique: true,
   },
   characters: {
     wally: {
-      x: { type: Number, required: true },
-      y: { type: Number, required: true },
+      x: { type: Number, min: 0, max: 100, required: true },
+      y: { type: Number, min: 0, max: 100, required: true },
     },
     wenda: {
-      x: { type: Number, required: true },
-      y: { type: Number, required: true },
+      x: { type: Number, min: 0, max: 100, required: true },
+      y: { type: Number, min: 0, max: 100, required: true },
     },
     wizard: {
-      x: { type: Number, required: true },
-      y: { type: Number, required: true },
+      x: { type: Number, min: 0, max: 100, required: true },
+      y: { type: Number, min: 0, max: 100, required: true },
     },
     odlaw: {
-      x: { type: Number, required: true },
-      y: { type: Number, required: true },
+      x: { type: Number, min: 0, max: 100, required: true },
+      y: { type: Number, min: 0, max: 100, required: true },
     },
   },
 });
