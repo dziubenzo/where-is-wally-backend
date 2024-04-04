@@ -1,10 +1,10 @@
 {
-  "name": "CHANGE_ME",
+  "name": "where-is-wally-backend",
   "version": "1.0.0",
   "engines": {
     "node": ">=20.11.1"
   },
-  "description": "FILL_ME_OUT",
+  "description": "A backend app for the Where's Wally project.",
   "main": "app.js",
   "private": "true",
   "scripts": {
