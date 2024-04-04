@@ -20,9 +20,8 @@ exports.post_create_player = asyncHandler(async (req, res, next) => {
 });
 
 exports.get_players_count = asyncHandler(async (req, res, next) => {
-  return res.json({
-    status: 'TODO',
-  });
+  const playersCount = await Player.countDocuments({}).lean().exec();
+  return res.json(playersCount);
 });
 
 exports.get_latest_player = asyncHandler(async (req, res, next) => {
