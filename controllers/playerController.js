@@ -29,10 +29,5 @@ exports.get_latest_player = asyncHandler(async (req, res, next) => {
     .sort({ end_date: -1 })
     .lean()
     .exec();
-  if (!latestPlayer) {
-    return res.json({
-      message: 'Not found.',
-    });
-  }
   return res.json(latestPlayer);
 });
