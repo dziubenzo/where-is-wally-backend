@@ -6,7 +6,7 @@ const { body, validationResult } = require('express-validator');
 exports.get_all_levels = asyncHandler(async (req, res, next) => {
   const allLevels = await Level.find({}).lean().exec();
   if (!allLevels.length) {
-    return res.status(404).json({
+    return res.json({
       message: 'No levels found.',
     });
   }

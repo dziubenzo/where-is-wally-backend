@@ -6,7 +6,7 @@ const { body, validationResult } = require('express-validator');
 exports.get_all_players = asyncHandler(async (req, res, next) => {
   const allPlayers = await Player.find({}).lean().exec();
   if (!allPlayers.length) {
-    return res.status(404).json({
+    return res.json({
       message: 'No leaderboard entries found.',
     });
   }
@@ -30,7 +30,7 @@ exports.get_latest_player = asyncHandler(async (req, res, next) => {
     .lean()
     .exec();
   if (!latestPlayer) {
-    return res.status(404).json({
+    return res.json({
       message: 'Not found.',
     });
   }

@@ -33,7 +33,7 @@ const limiter = RateLimit({
 
 // CORS options - allowed site(s)
 const corsOptions = {
-  origin: '',
+  origin: 'http://localhost:5173',
 };
 
 // Middleware
