@@ -18,24 +18,28 @@ const LevelSchema = new Schema({
     type: String,
     required: true,
   },
-  characters: {
-    wally: {
+  characters: [
+    {
+      name: { type: String, required: true },
       x: { type: Number, min: 0, max: 100, required: true },
       y: { type: Number, min: 0, max: 100, required: true },
     },
-    wenda: {
+    {
+      name: { type: String, required: true },
       x: { type: Number, min: 0, max: 100, required: true },
       y: { type: Number, min: 0, max: 100, required: true },
     },
-    wizard: {
+    {
+      name: { type: String, required: true },
       x: { type: Number, min: 0, max: 100, required: true },
       y: { type: Number, min: 0, max: 100, required: true },
     },
-    odlaw: {
+    {
+      name: { type: String, required: true },
       x: { type: Number, min: 0, max: 100, required: true },
       y: { type: Number, min: 0, max: 100, required: true },
     },
-  },
+  ],
 });
 
 module.exports = mongoose.model('Level', LevelSchema);

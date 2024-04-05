@@ -38,24 +38,28 @@ exports.post_create_level = [
       url_parameter: url_parameter,
       name: name,
       image_url: image_url,
-      characters: {
-        wally: {
+      characters: [
+        {
+          name: 'wally',
           x: coordinatesArray[0],
           y: coordinatesArray[1],
         },
-        wenda: {
+        {
+          name: 'wenda',
           x: coordinatesArray[2],
           y: coordinatesArray[3],
         },
-        wizard: {
+        {
+          name: 'wizard',
           x: coordinatesArray[4],
           y: coordinatesArray[5],
         },
-        odlaw: {
+        {
+          name: 'odlaw',
           x: coordinatesArray[6],
           y: coordinatesArray[7],
         },
-      },
+      ],
     });
 
     await level.save();
