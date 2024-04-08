@@ -5,7 +5,11 @@ const { body, validationResult } = require('express-validator');
 const { isTime, isEndGreaterThanStart } = require('../config/helpers');
 
 exports.get_all_players = asyncHandler(async (req, res, next) => {
-  const allPlayers = await Player.find({}).lean().exec();
+  const allPlayers = await Player.find({})
+    .populate('level')
+    .sort({ duration: 1, hints_used: -1 })
+    .lean()
+    .exec();
   if (!allPlayers.length) {
     return res.json({
       message: 'No leaderboard entries found.',
