@@ -23,7 +23,11 @@ const PlayerSchema = new Schema({
     required: true,
   },
   duration: {
-    type: Date,
+    type: Schema.Types.Decimal128,
+    required: true,
+  },
+  hints_used: {
+    type: Boolean,
     required: true,
   },
 });
