@@ -29,6 +29,7 @@ const RateLimit = require('express-rate-limit');
 const limiter = RateLimit({
   windowMs: 1 * 60 * 1000,
   max: 40,
+  validate: {xForwardedForHeader: false}
 });
 
 // CORS options - allowed site(s)
