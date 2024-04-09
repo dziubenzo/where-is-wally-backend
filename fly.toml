@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'where-is-wally-backend'
+app = 'dziubenzo-where-is-wally'
 primary_region = 'waw'
 
 [build]

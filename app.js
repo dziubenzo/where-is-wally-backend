@@ -34,7 +34,7 @@ const limiter = RateLimit({
 
 // CORS options - allowed site(s)
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: 'https://dziubenzo-where-is-wally.netlify.app/',
 };
 
 // Middleware
