@@ -1,4 +1,14 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import { LevelType } from './Level';
+
+export type PlayerType = {
+  nickname: string;
+  level: LevelType;
+  start_date: Date;
+  end_date: Date;
+  duration: number;
+  hints_used: Boolean;
+};
 
 const Schema = mongoose.Schema;
 
@@ -32,4 +42,4 @@ const PlayerSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('Player', PlayerSchema);
+export default mongoose.model('Player', PlayerSchema);

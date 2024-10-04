@@ -1,14 +1,19 @@
+import type { Request } from 'express';
+
 // Check if start/end is a valid time
-exports.isTime = (value) => {
+export const isTime = (value: string) => {
   const field = new Date(parseInt(value));
-  if (isNaN(field)) {
+  if (!field.valueOf()) {
     throw new Error('Field is not a valid date object');
   }
   return true;
 };
 
 // Check if end is greater than start
-exports.isEndGreaterThanStart = (value, { req }) => {
+export const isEndGreaterThanStart = (
+  value: string,
+  { req }: { req: Request }
+) => {
   if (value > req.body.start) {
     return true;
   }

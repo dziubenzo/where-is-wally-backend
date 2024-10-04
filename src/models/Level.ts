@@ -1,4 +1,22 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
+export type Character<name> = {
+  name: name;
+  x: number;
+  y: number;
+};
+
+export type LevelType = {
+  url_parameter: number;
+  name: string;
+  image_url: string;
+  characters: [
+    Character<'wally'>,
+    Character<'wenda'>,
+    Character<'wizard'>,
+    Character<'odlaw'>
+  ];
+};
 
 const Schema = mongoose.Schema;
 
@@ -42,4 +60,4 @@ const LevelSchema = new Schema({
   ],
 });
 
-module.exports = mongoose.model('Level', LevelSchema);
+export default mongoose.model('Level', LevelSchema);
