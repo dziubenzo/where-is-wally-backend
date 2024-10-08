@@ -1,8 +1,9 @@
 import type { NextFunction, Request, Response } from 'express';
+import type { LevelType } from '../models/Level';
+import Level from '../models/Level';
+
 import asyncHandler from 'express-async-handler';
 import { body, validationResult } from 'express-validator';
-import Level from '../models/Level';
-import type { LevelType } from '../models/Level';
 
 export const getAllLevels = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {

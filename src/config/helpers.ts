@@ -1,4 +1,5 @@
 import type { Request } from 'express';
+import type { CustomValidator, Meta } from 'express-validator';
 
 // Check if start/end is a valid time
 export const isTime = (value: string) => {
@@ -10,10 +11,8 @@ export const isTime = (value: string) => {
 };
 
 // Check if end is greater than start
-export const isEndGreaterThanStart = (
-  value: string,
-  { req }: { req: Request }
-) => {
+export const isEndGreaterThanStart = (value: string, meta: Meta) => {
+  const req = meta.req;
   if (value > req.body.start) {
     return true;
   }
