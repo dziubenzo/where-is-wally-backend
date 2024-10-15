@@ -8,8 +8,8 @@ import { isEndGreaterThanStart, isTime } from '../config/helpers';
 
 export const getAllPlayers = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const allPlayers = await Player.find({})
-      .populate('level')
+    const allPlayers = await Player.find({}, '-__v')
+      .populate('level', '-__v')
       .sort({ duration: 1, hints_used: -1 })
       .lean()
       .exec();
@@ -89,7 +89,7 @@ export const getPlayersCount = asyncHandler(
 
 export const getLatestPlayer = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const latestPlayer = await Player.findOne()
+    const latestPlayer = await Player.findOne({}, '-__v')
       .sort({ end_date: -1 })
       .lean()
       .exec();

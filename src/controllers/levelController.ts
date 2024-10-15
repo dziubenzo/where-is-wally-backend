@@ -8,7 +8,7 @@ import { LEVELS_COUNT } from '../config/constants';
 
 export const getAllLevels = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const allLevels = await Level.find({}).lean().exec();
+    const allLevels = await Level.find({}, '-__v').lean().exec();
     if (!allLevels.length) {
       res.json({
         message: 'No levels found.',
@@ -96,7 +96,7 @@ export const getLevel = [
     }
 
     const url_parameter = req.params.urlParameter;
-    const level = await Level.findOne({ url_parameter }).lean().exec();
+    const level = await Level.findOne({ url_parameter }, '-__v').lean().exec();
     res.json(level);
     return;
   }),
