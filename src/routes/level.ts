@@ -14,10 +14,10 @@ router.get('/', getAllLevels);
 // POST create level
 router.post('/', createLevel);
 
-// GET single level
-router.get('/:urlParameter', getLevel);
-
 // GET get levels count
 router.get('/count', getLevelsCount);
+
+// GET single level
+router.get('/:urlParameter', getLevel);
 
 export default router;

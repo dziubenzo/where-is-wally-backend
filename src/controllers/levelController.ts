@@ -79,6 +79,14 @@ export const createLevel = [
   }),
 ];
 
+export const getLevelsCount = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const levelsCount = await Level.countDocuments({}).lean().exec();
+    res.json(levelsCount);
+    return;
+  }
+);
+
 export const getLevel = [
   // Make sure the parameter is an integer and is in the range of 1 to LEVELS_COUNT
   param('urlParameter')
@@ -101,11 +109,3 @@ export const getLevel = [
     return;
   }),
 ];
-
-export const getLevelsCount = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
-    const levelsCount = await Level.countDocuments({}).lean().exec();
-    res.json(levelsCount);
-    return;
-  }
-);
