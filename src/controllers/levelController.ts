@@ -3,7 +3,8 @@ import type { LevelType } from '../models/Level';
 import Level from '../models/Level';
 
 import asyncHandler from 'express-async-handler';
-import { body, validationResult } from 'express-validator';
+import { body, param, validationResult } from 'express-validator';
+import { LEVELS_COUNT } from '../config/constants';
 
 export const getAllLevels = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -74,6 +75,29 @@ export const createLevel = [
     res.json({
       message: 'Level created successfully.',
     });
+    return;
+  }),
+];
+
+export const getLevel = [
+  // Make sure the parameter is an integer and is in the range of 1 to LEVELS_COUNT
+  param('urlParameter')
+    .isInt()
+    .custom((value) => value >= 1 && value <= LEVELS_COUNT),
+
+  asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      res.status(400).json({
+        message: 'Invalid URL parameter',
+      });
+      return;
+    }
+
+    const url_parameter = req.params.urlParameter;
+    const level = await Level.findOne({ url_parameter }).lean().exec();
+    res.json(level);
     return;
   }),
 ];

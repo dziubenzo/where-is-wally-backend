@@ -1,5 +1,4 @@
-import type { Request } from 'express';
-import type { CustomValidator, Meta } from 'express-validator';
+import type { Meta } from 'express-validator';
 
 // Check if start/end is a valid time
 export const isTime = (value: string) => {
