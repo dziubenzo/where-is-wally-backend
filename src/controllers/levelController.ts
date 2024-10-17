@@ -97,9 +97,7 @@ export const getLevel = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      res.status(400).json({
-        message: 'Invalid URL parameter',
-      });
+      res.status(400).json('Invalid URL parameter');
       return;
     }
 
