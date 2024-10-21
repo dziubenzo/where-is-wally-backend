@@ -1,4 +1,5 @@
 import type { NextFunction, Request, Response } from 'express';
+import type { ObjectId } from 'mongoose';
 import type { PlayerType } from '../models/Player';
 import Player from '../models/Player';
 
@@ -28,6 +29,7 @@ export const createPlayer = [
   // Check nickname field and other data
   body('nickname', 'Nickname field must contain between 1 and 16 characters')
     .trim()
+    .isString()
     .isLength({ min: 1, max: 16 }),
   body('level', 'Incorrect level ID').isMongoId(),
   body('start').custom(isTime),
@@ -45,16 +47,15 @@ export const createPlayer = [
       return;
     }
 
-    const nickname = req.body.nickname;
+    const nickname = req.body.nickname as string;
     const startDate = new Date(parseInt(req.body.start));
     const endDate = new Date(parseInt(req.body.end));
-    const level = req.body.level;
-    const hintsUsed = req.body.hints_used;
-    const durationInSec = (endDate.getTime() - startDate.getTime()) / 1000;
-    const duration = parseFloat(durationInSec.toFixed(2));
+    const level = req.body.level as ObjectId;
+    const hintsUsed = req.body.hints_used as boolean;
+    const duration = (endDate.getTime() - startDate.getTime()) / 1000;
 
-    // Return error if duration is shorter than 5 seconds
-    if (duration < 5.0) {
+    // Return error if duration is shorter than 7 seconds
+    if (duration < 7) {
       res.status(400).json({
         message: 'There is something wrong with the record or the server.',
       });

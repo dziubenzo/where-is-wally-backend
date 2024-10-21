@@ -1,13 +1,12 @@
-import mongoose from 'mongoose';
-import { LevelType } from './Level';
+import mongoose, { type ObjectId } from 'mongoose';
 
 export type PlayerType = {
   nickname: string;
-  level: LevelType;
+  level: ObjectId;
   start_date: Date;
   end_date: Date;
   duration: number;
-  hints_used: Boolean;
+  hints_used: boolean;
 };
 
 const Schema = mongoose.Schema;
