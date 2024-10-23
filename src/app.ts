@@ -16,7 +16,7 @@ import playerRouter from './routes/player';
 // Frontend URL
 const FRONTEND_URL = isProduction()
   ? 'https://dziubenzo-where-is-wally.netlify.app'
-  : 'http://localhost:5173';
+  : ['http://localhost:5173', 'http://192.168.0.13:5173'];
 
 // CORS options - allowed site(s)
 const corsOptions = {
