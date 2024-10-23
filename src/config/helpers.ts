@@ -17,3 +17,8 @@ export const isEndGreaterThanStart = (value: string, meta: Meta) => {
   }
   throw new Error('End is not greater than start');
 };
+
+// Check for production environment
+export const isProduction = () => {
+  return process.env.NODE_ENV === 'production';
+};
