@@ -1,5 +1,4 @@
 import type { NextFunction, Request, Response } from 'express';
-import type { LevelType } from '../models/Level';
 import Level from '../models/Level';
 
 import asyncHandler from 'express-async-handler';
@@ -37,12 +36,12 @@ export const createLevel = [
       return;
     }
 
-    const name: string = req.body.name;
-    const image_url: string = req.body.image_url;
-    const coordinatesArray: number[] = JSON.parse(req.body.coordinates);
+    const name = req.body.name;
+    const image_url = req.body.image_url;
+    const coordinatesArray = JSON.parse(req.body.coordinates);
     const url_parameter = (await Level.countDocuments({}).lean().exec()) + 1;
 
-    const level: LevelType = {
+    const level = {
       url_parameter: url_parameter,
       name: name,
       image_url: image_url,

@@ -1,6 +1,4 @@
 import type { NextFunction, Request, Response } from 'express';
-import type { ObjectId } from 'mongoose';
-import type { PlayerType } from '../models/Player';
 import Player from '../models/Player';
 
 import asyncHandler from 'express-async-handler';
@@ -47,11 +45,11 @@ export const createPlayer = [
       return;
     }
 
-    const nickname = req.body.nickname as string;
+    const nickname = req.body.nickname;
     const startDate = new Date(parseInt(req.body.start));
     const endDate = new Date(parseInt(req.body.end));
-    const level = req.body.level as ObjectId;
-    const hintsUsed = req.body.hints_used as boolean;
+    const level = req.body.level;
+    const hintsUsed = req.body.hints_used;
     const duration = (endDate.getTime() - startDate.getTime()) / 1000;
 
     // Return error if duration is shorter than 7 seconds
@@ -62,7 +60,7 @@ export const createPlayer = [
       return;
     }
 
-    const player: PlayerType = {
+    const player = {
       nickname: nickname,
       level: level,
       start_date: startDate,

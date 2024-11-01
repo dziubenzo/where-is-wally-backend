@@ -1,13 +1,4 @@
-import mongoose, { type ObjectId } from 'mongoose';
-
-export type PlayerType = {
-  nickname: string;
-  level: ObjectId;
-  start_date: Date;
-  end_date: Date;
-  duration: number;
-  hints_used: boolean;
-};
+import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 

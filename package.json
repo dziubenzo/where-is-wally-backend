@@ -4,7 +4,7 @@
   "engines": {
     "node": ">=20.11.1"
   },
-  "description": "A backend app for the Where's Wally project.",
+  "description": "Backend for the Where's Wally project.",
   "main": "./dist/app.mjs",
   "private": "true",
   "type": "module",
